@@ -1,0 +1,34 @@
+import random
+
+
+def BubbleSort(list):
+  n_items = len(list)
+  global comparisons
+  comparisons = 0
+  running = True
+
+  while running:
+    running = False
+    for x in range(0, n_items - 1):
+      if list[x] > list[x+1]:
+        running = True
+        comparisons += 1
+        list[x], list[x+1] = list[x+1], list[x]
+
+  return list
+
+
+rand_list = random.sample(range(0, 51), 50)
+print(BubbleSort(rand_list))
+
+
+def comparison_average(n_trials):
+  running_total = 0
+  for x in range(n_trials):
+    rand_list = random.sample(range(0, 51), 50)
+    BubbleSort(rand_list)
+    running_total += comparisons
+  return running_total / n_trials
+
+
+print("Comparison Average: " + str(comparison_average(10)))
