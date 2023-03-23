@@ -1,0 +1,22 @@
+sequence = [0, 1]
+
+
+def fibonacci(n):
+    if n < 0:
+        print("impossible. try again.")
+
+    # if there are now n numbers in the list, index the last item.
+    # that is the nth digit the function asks for.
+    if n <= len(sequence):
+        return sequence[n-1]
+
+    # if not at n numbers, calculate the next number in the sequence.
+    # then, add that to the sequence list.
+    else:
+        nth_digit = fibonacci(n-1) + fibonacci(n-2)
+        sequence.append(nth_digit)
+        return nth_digit
+
+
+print(fibonacci(9))
+print(sequence)
