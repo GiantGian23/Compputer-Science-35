@@ -1,0 +1,27 @@
+seed_list = list(range(1, 61))  # random.sample(range(1, 61), 60)]  # this will be a random order of all teams
+list1 = list(range(1, 61))
+print("\n \n")
+print("- - - - - - Matchup 1 - - - - - -")
+print()
+
+for x in range(15):
+    range_start = x * 4
+    range_end = range_start + 4
+    print(list1[range_start:range_end])
+
+for x in range(4):
+    x += 2
+    print("\n \n")
+    print("- - - - - - Matchup %s - - - - - -" %x)
+    print()
+
+    list2 = []
+    for y in range(4):
+        list2 += list1[y::4]
+
+    for z in range(15):
+        range_start = z * 4
+        range_end = range_start + 4
+        print(list2[range_start:range_end])
+
+    list1 = list2
