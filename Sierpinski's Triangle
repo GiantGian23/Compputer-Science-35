@@ -1,0 +1,32 @@
+import pygame
+pygame.init()
+
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+side = 700
+screen = pygame.display.set_mode((side, side))
+screen.fill(WHITE)
+
+
+def sierpinski(x, y, size, depth):
+    if depth == 0:
+        # base case: black triangle
+        pygame.draw.polygon(screen, BLACK, [(x, y), (x + size, y), (x + size / 2, y + size)])
+    else:
+        # recursive case: draw three smaller triangles
+        sierpinski(x, y, size / 2, depth - 1)
+        sierpinski(x + size / 2, y, size / 2, depth - 1)
+        sierpinski(x + size / 4, y + size / 2, size / 2, depth - 1)
+
+
+iterations = 10
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        sierpinski(0, 0, side, iterations)
+        pygame.display.flip()
+pygame.quit()
