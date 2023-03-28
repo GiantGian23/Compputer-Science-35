@@ -1,0 +1,18 @@
+unsorted = [8, 1, 5, 3, 7, 9, 4, 2, 6, 0]
+sorted_output = []
+
+
+def selection_sort(unsorted_list):
+    current_minimum = unsorted_list[0]
+    for x in range(1, len(unsorted_list)):
+        if unsorted_list[x] < current_minimum:
+            current_minimum = unsorted_list[x]
+    unsorted_list.remove(current_minimum)
+    sorted_output.append(current_minimum)
+
+    if len(unsorted_list) > 0:
+        selection_sort(unsorted_list)
+
+    return sorted_output
+
+print(selection_sort(unsorted))
